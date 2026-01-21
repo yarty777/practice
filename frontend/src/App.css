@@ -1,0 +1,182 @@
+:root {
+  --deep-twilight: #03045eff;
+  --french-blue: #023e8aff;
+  --bright-teal-blue: #0077b6ff;
+  --blue-green: #0096c7ff;
+  --turquoise-surf: #00b4d8ff;
+  --sky-aqua: #48cae4ff;
+  --frosted-blue: #90e0efff;
+  --frosted-blue-2: #ade8f4ff;
+  --light-cyan: #caf0f8ff;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--light-cyan); /* Світлий фон для всього сайту */
+  color: var(--deep-twilight);
+}
+
+
+/* Навігація */
+
+/* Стилі для контейнера логотипа в наварі */
+.logo-container {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  gap: 10px;
+}
+
+.nav-logo {
+  height: 40px; /* Регулюйте висоту логотипа тут */
+  width: auto;
+  border-radius: 8px; /* Якщо логотип квадратний, можна трохи закруглити */
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--deep-twilight);
+  letter-spacing: -0.5px;
+}
+.nav-menu {
+  padding: 10px 50px;
+  background: white;
+  display: flex;
+  justify-content: space-between; /* Розносить лого і посилання в різні боки */
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(3, 4, 94, 0.1);
+}
+.nav-links {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--french-blue);
+  font-weight: 600;
+  transition: 0.3s;
+}
+.nav-menu a {
+  text-decoration: none;
+  color: var(--french-blue);
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.nav-menu a:hover {
+  color: var(--turquoise-surf);
+}
+
+
+/* Контейнери */
+.container {
+  display: flex;
+  min-height: 85vh;
+  align-items: center;
+}
+
+.side {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px;
+}
+
+/* Тексти */
+h1, h2 {
+  color: var(--deep-twilight);
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+p {
+  line-height: 1.6;
+  color: var(--french-blue);
+  font-size: 1.1rem;
+}
+
+/* Зображення та плейсхолдери */
+.image-placeholder {
+  width: 100%;
+  max-width: 500px;
+  height: 350px;
+  background: linear-gradient(135deg, var(--sky-aqua), var(--bright-teal-blue));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  color: white;
+  box-shadow: 0 15px 30px rgba(0, 119, 182, 0.2);
+}
+
+.main-img {
+  width: 70%;        /* Зменшуємо ширину до 70% від батьківського блоку */
+  max-width: 400px;  /* Зменшуємо максимальну межу (було 550px або 600px) */
+  height: auto;      /* Зберігаємо пропорції */
+  border-radius: 20px; 
+  box-shadow: 0 10px 30px rgba(3, 4, 94, 0.15); 
+  display: block;
+  margin: 0 auto;    /* Центруємо картинку в її половинці екрана */
+}
+
+/* Форма входу */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 350px;
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(3, 4, 94, 0.05);
+}
+
+.login-form input {
+  padding: 12px 15px;
+  border: 2px solid var(--frosted-blue-2);
+  border-radius: 10px;
+  outline: none;
+  transition: 0.3s;
+}
+
+.login-form input:focus {
+  border-color: var(--turquoise-surf);
+}
+
+.login-form button {
+  padding: 12px;
+  background-color: var(--bright-teal-blue);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login-form button:hover {
+  background-color: var(--deep-twilight);
+  transform: translateY(-2px);
+}
+
+/* Футер */
+.footer {
+  text-align: center;
+  padding: 25px;
+  background: var(--deep-twilight); /* Ваш темно-синій колір */
+  color: white;                     /* РОБИМО ТЕКСТ БІЛИМ */
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Якщо текст всередині футера знаходиться в тегу p, додамо ще цей селектор для надійності */
+.footer p {
+  color: white; 
+  margin: 0;
+}
