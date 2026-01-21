@@ -1,3 +1,4 @@
+
 :root {
   --deep-twilight: #03045eff;
   --french-blue: #023e8aff;
@@ -179,4 +180,7 @@ p {
 .footer p {
   color: white; 
   margin: 0;
+}
+.student_info{
+    margin: 0px;
 }

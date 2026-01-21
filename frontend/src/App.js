@@ -1,5 +1,6 @@
 import './App.css';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import {StudentDashboard,StudentLabs} from './Student.js'
 
 // Імпортуємо картинки та логотип
 import homeImg from './assets/home-img.png';
@@ -19,12 +20,31 @@ function App() {
         <div className="nav-links">
           <Link to="/" className="nav-link">Головна</Link>
           <Link to="/login" className="nav-link">Увійти</Link>
+          <Link to="/student/dashboard" className="nav-link">Головна</Link>
+          <Link to="/student/labs" className="nav-link">Увійти</Link>
         </div>
       </nav>
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
+          {/*Головна*/}
+          <Route path="/login" element={<Login />} />
+          {/*Реєстрація*/}
+
+          <Route path="/student/dashboard" element={<StudentDashboard />} />
+          {/*профіль студента (ПІБ група статистика)*/}
+          <Route path="/student/labs" element={<StudentLabs />} />
+          {/*список лаб}
+          {/*
+          <Route path="/teacher/dashboard" element={<TeacherDashboard />} />
+          {статистика по групам і профіль вчителя}
+          <Route path="/teacher/students" element={<TeacherStudents />} />
+          {список студентів}
+          <Route path="/teacher/labs" element={<TeacherLabs />} />
+          {створення редагування лабараторних робіт}
+          
+          <Route path="*" element={<div>404 - Сторінку не знайдено</div>} />
+          {ПОМИЛКА!!!}*/}
       </Routes>
 
       <footer className="footer">
