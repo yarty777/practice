@@ -2,7 +2,9 @@ from fastapi import FastAPI, HTTPException, Depends, Query, Path
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 from typing import Optional, List
+from fastapi import FastAPI
 from pymongo import MongoClient
+from Routers.students import router as students_router
 
 
 # Для роботи з базою даних (якщо буде потрібно)
@@ -85,6 +87,13 @@ class LaboratoryWork:
             "max_mark": self.max_mark,
             "deadline": self.deadline
         }
+#Fast Api
+app = FastAPI()
+app.include_router(students_router)
+
+@app.get("/")
+def root():
+    return {"message": "FastAPI works"}
 # Для асинхронності
 import asyncio
 
