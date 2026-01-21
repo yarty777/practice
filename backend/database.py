@@ -9,3 +9,4 @@ db = client["Practica"]
 
 # Колекції
 students_collection = db["students"]
+users_collection = db["users"]

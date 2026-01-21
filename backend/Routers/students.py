@@ -1,49 +1,34 @@
-# Routers/students.py
 from fastapi import APIRouter, HTTPException, Depends
 from Models.student import Student
-from database import students_collection # type: ignore
-from auth.auth import get_current_user # type: ignore
+from database import students_collection
+from auth.auth import get_current_user
 
 router = APIRouter(prefix="/students", tags=["Students"])
 
 
-# 🔐 тільки з JWT
 @router.post("/")
 def add_student(
     student: Student,
     user=Depends(get_current_user)
 ):
+    if students_collection.find_one({"email": student.email}):
+        raise HTTPException(status_code=400, detail="Student already exists")
+
     students_collection.insert_one(student.dict())
     return {"status": "student added"}
 
 
 @router.get("/")
 def get_students(user=Depends(get_current_user)):
-    return list(students_collection.find({}, {"_id": 0}))
-
-
-@router.get("/{email}")
-def get_student_by_email(
-    email: str,
-    user=Depends(get_current_user)
-):
-    student = students_collection.find_one(
-        {"email": email},
-        {"_id": 0}
-    )
-
-    if not student:
-        raise HTTPException(status_code=404, detail="Student not found")
-
-    return student
+    students = list(students_collection.find({}, {"_id": 0}))
+    return students
 
 
 @router.put("/{email}")
 def update_student(
     email: str,
     student: Student,
-    user=Depends(get_current_user)
-):
+    user=Depends(get_current_user)):
     result = students_collection.update_one(
         {"email": email},
         {"$set": student.dict()}
@@ -58,8 +43,7 @@ def update_student(
 @router.delete("/{email}")
 def delete_student(
     email: str,
-    user=Depends(get_current_user)
-):
+    user=Depends(get_current_user)):
     result = students_collection.delete_one({"email": email})
 
     if result.deleted_count == 0:
