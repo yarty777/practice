@@ -20,8 +20,8 @@ function App() {
         <div className="nav-links">
           <Link to="/" className="nav-link">Головна</Link>
           <Link to="/login" className="nav-link">Увійти</Link>
-          <Link to="/student/dashboard" className="nav-link">Головна</Link>
-          <Link to="/student/labs" className="nav-link">Увійти</Link>
+          <Link to="/student/dashboard" className="nav-link">Профіль(студента)</Link>{/*тимчасова річ для легшого пересування*/ }
+          <Link to="/student/labs" className="nav-link">Лаби(студента)</Link>{/*тимчасова річ для легшого пересування*/ }
         </div>
       </nav>
 
