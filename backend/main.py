@@ -1,13 +1,17 @@
-from fastapi import FastAPI, HTTPException, Depends, Query, Path
-from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel, Field
-from typing import Optional, List
+from fastapi import FastAPI
+from Routers.students import router as students_router
+from auth.auth import router as auth_router # type: ignore
 
-# Для роботи з базою даних (якщо буде потрібно)
-import sqlite3
-import json
-from datetime import datetime
+app = FastAPI(title="Laboratory Accounting System")
 
+# Підключаємо router-и
+app.include_router(auth_router)
+app.include_router(students_router)
+
+
+@app.get("/")
+def root():
+    return {"message": "FastAPI works"}
 # Для асинхронності
 import asyncio
 
@@ -16,11 +20,8 @@ import os
 
 #це бібліотеки від чата
 
-
-
 #це для запуску проетку:
 #uvicorn main:app --reload
-
 
 #якщо верхнє не працює то треба ще нижнє ввести
 #venv\Scripts\activate
