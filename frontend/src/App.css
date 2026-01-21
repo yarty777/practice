@@ -1,3 +1,4 @@
+/* 1. Змінні кольорів SkyLab */
 :root {
   --deep-twilight: #03045eff;
   --french-blue: #023e8aff;
@@ -10,138 +11,124 @@
   --light-cyan: #caf0f8ff;
 }
 
+/* 2. Базові стилі */
 body {
   margin: 0;
-  font-family: 'Segoe UI', Roboto, sans-serif;
-  background-color: var(--light-cyan); /* Світлий фон для всього сайту */
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--light-cyan);
   color: var(--deep-twilight);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
+/* 3. Навігація */
+.nav-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 5%;
+  background: white;
+  box-shadow: 0 2px 15px rgba(3, 4, 94, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
 
-/* Навігація */
-
-/* Стилі для контейнера логотипа в наварі */
 .logo-container {
   display: flex;
   align-items: center;
   text-decoration: none;
-  gap: 10px;
+  gap: 12px;
 }
 
 .nav-logo {
-  height: 40px; /* Регулюйте висоту логотипа тут */
+  height: 45px;
   width: auto;
-  border-radius: 8px; /* Якщо логотип квадратний, можна трохи закруглити */
 }
 
 .logo-text {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 800;
   color: var(--deep-twilight);
-  letter-spacing: -0.5px;
+  letter-spacing: -1px;
 }
-.nav-menu {
-  padding: 10px 50px;
-  background: white;
-  display: flex;
-  justify-content: space-between; /* Розносить лого і посилання в різні боки */
-  align-items: center;
-  box-shadow: 0 2px 10px rgba(3, 4, 94, 0.1);
-}
+
 .nav-links {
   display: flex;
-  gap: 30px;
+  gap: 25px;
 }
 
 .nav-link {
   text-decoration: none;
   color: var(--french-blue);
   font-weight: 600;
-  transition: 0.3s;
-}
-.nav-menu a {
-  text-decoration: none;
-  color: var(--french-blue);
-  font-weight: 600;
-  transition: 0.3s;
+  transition: 0.3s ease;
 }
 
-.nav-menu a:hover {
-  color: var(--turquoise-surf);
-}
-
-
-/* Контейнери */
+/* 4. Головний контейнер */
 .container {
   display: flex;
-  min-height: 85vh;
+  flex: 1;
   align-items: center;
+  justify-content: center;
+  padding: 40px 5%;
+  max-width: 1600px;
+  margin: 0 auto;
+  gap: 60px;
+  box-sizing: border-box;
 }
 
 .side {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 60px;
 }
 
-/* Тексти */
-h1, h2 {
-  color: var(--deep-twilight);
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-}
-
-p {
-  line-height: 1.6;
-  color: var(--french-blue);
-  font-size: 1.1rem;
-}
-
-/* Зображення та плейсхолдери */
-.image-placeholder {
-  width: 100%;
-  max-width: 500px;
-  height: 350px;
-  background: linear-gradient(135deg, var(--sky-aqua), var(--bright-teal-blue));
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 20px;
-  color: white;
-  box-shadow: 0 15px 30px rgba(0, 119, 182, 0.2);
-}
-
+/* 5. Стилі зображень */
 .main-img {
-  width: 70%;        /* Зменшуємо ширину до 70% від батьківського блоку */
-  max-width: 400px;  /* Зменшуємо максимальну межу (було 550px або 600px) */
-  height: auto;      /* Зберігаємо пропорції */
-  border-radius: 20px; 
-  box-shadow: 0 10px 30px rgba(3, 4, 94, 0.15); 
+  width: 100%;
+  max-width: 800px; /* Велика картинка для головної */
+  height: auto;
+  border-radius: 30px;
+  box-shadow: 0 20px 50px rgba(3, 4, 94, 0.2);
   display: block;
-  margin: 0 auto;    /* Центруємо картинку в її половинці екрана */
+  margin: 0 auto;
 }
 
-/* Форма входу */
+/* Спеціальний розмір для картинки на сторінці логіну (менша) */
+.login-page .main-img {
+  max-width: 500px; /* У 1.5-2 рази менша за головну */
+}
+
+/* 6. Форма авторизації (В СТОВПЧИК) */
 .login-form {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Елементи один під одним */
   gap: 20px;
   width: 100%;
-  max-width: 350px;
+  max-width: 350px; /* Компактна ширина */
   background: white;
   padding: 40px;
   border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(3, 4, 94, 0.05);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.login-form h2 {
+  margin-top: 0;
+  color: var(--deep-twilight);
+  text-align: center;
 }
 
 .login-form input {
   padding: 12px 15px;
   border: 2px solid var(--frosted-blue-2);
   border-radius: 10px;
+  font-size: 1rem;
   outline: none;
   transition: 0.3s;
+  width: 100%; /* На всю ширину форми */
+  box-sizing: border-box;
 }
 
 .login-form input:focus {
@@ -149,34 +136,49 @@ p {
 }
 
 .login-form button {
-  padding: 12px;
+  padding: 14px;
   background-color: var(--bright-teal-blue);
   color: white;
   border: none;
   border-radius: 10px;
-  font-weight: bold;
+  font-weight: 700;
   cursor: pointer;
   transition: 0.3s;
 }
 
 .login-form button:hover {
   background-color: var(--deep-twilight);
-  transform: translateY(-2px);
 }
 
-/* Футер */
+/* 7. Текстовий контент головної */
+.right-side {
+  text-align: left;
+}
+
+h1 {
+  font-size: 3.5rem;
+  margin: 0 0 20px 0;
+}
+
+/* 8. Футер */
 .footer {
+  background-color: var(--deep-twilight);
+  color: white;
   text-align: center;
-  padding: 25px;
-  background: var(--deep-twilight); /* Ваш темно-синій колір */
-  color: white;                     /* РОБИМО ТЕКСТ БІЛИМ */
-  position: relative;
+  padding: 20px 0;
   width: 100%;
-  box-sizing: border-box;
 }
 
-/* Якщо текст всередині футера знаходиться в тегу p, додамо ще цей селектор для надійності */
-.footer p {
-  color: white; 
-  margin: 0;
+/* 9. Адаптивність */
+@media (max-width: 1100px) {
+  .container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .login-page {
+    flex-direction: column-reverse; /* Форма зверху на мобільних */
+  }
+  .main-img {
+    width: 80%;
+  }
 }
