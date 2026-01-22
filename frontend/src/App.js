@@ -1,56 +1,34 @@
 import './App.css';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import {StudentDashboard,StudentLabs} from './Student.js'
-
-// Імпортуємо картинки та логотип
 import homeImg from './assets/home-img.png';
 import loginImg from './assets/login-img.png';
-import logoImg from './assets/logo.png'; // Твій новий логотип
+import logoImg from './assets/logo.png';
+import TeacherStudentsPage from './TeacherStudentsPage'; // ДОДАВ ЦЕЙ ІМПОРТ!
 
 function App() {
   return (
-    <BrowserRouter>
-      <nav className="nav-menu">
-        {/* Логотип як посилання на головну сторінку */}
-        <Link to="/" className="logo-container">
-          <img src={logoImg} alt="SkyLab Logo" className="nav-logo" />
-          <span className="logo-text">SkyLab</span>
-        </Link>
-
-        <div className="nav-links">
-          <Link to="/" className="nav-link">Головна</Link>
-          <Link to="/login" className="nav-link">Увійти</Link>
-          <Link to="/student/dashboard" className="nav-link">Профіль(студента)</Link>{/*тимчасова річ для легшого пересування*/ }
-          <Link to="/student/labs" className="nav-link">Лаби(студента)</Link>{/*тимчасова річ для легшого пересування*/ }
-        </div>
-      </nav>
-
-      <Routes>
-        <Route path="/" element={<Home />} />
-          {/*Головна*/}
+    <>
+      <BrowserRouter>
+        <nav className="nav-menu">
+          <Link to="/" className="logo-container">
+            <img src={logoImg} alt="SkyLab Logo" className="nav-logo" />
+            <span className="logo-text">SkyLab</span>
+          </Link>
+          <div className="nav-links">
+            <Link to="/" className="nav-link">Головна</Link>
+            <Link to="/login" className="nav-link">Увійти</Link>
+          </div>
+        </nav>
+        <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
-          {/*Реєстрація*/}
-
-          <Route path="/student/dashboard" element={<StudentDashboard />} />
-          {/*профіль студента (ПІБ група статистика)*/}
-          <Route path="/student/labs" element={<StudentLabs />} />
-          {/*список лаб}
-          {/*
-          <Route path="/teacher/dashboard" element={<TeacherDashboard />} />
-          {статистика по групам і профіль вчителя}
-          <Route path="/teacher/students" element={<TeacherStudents />} />
-          {список студентів}
-          <Route path="/teacher/labs" element={<TeacherLabs />} />
-          {створення редагування лабараторних робіт}
-          
-          <Route path="*" element={<div>404 - Сторінку не знайдено</div>} />
-          {ПОМИЛКА!!!}*/}
-      </Routes>
-
-      <footer className="footer">
-        <p>Контакти: +380 00 000 00 00 | 2026 SYS</p>
-      </footer>
-    </BrowserRouter>
+          <Route path="/teacher/students" element={<TeacherStudentsPage />} /> {/* ДОДАВ ЦЕЙ ROUTE! */}
+        </Routes>
+        <footer className="footer">
+          <p>Контакти: +380 00 000 00 00 | 2026 SYS</p>
+        </footer>
+      </BrowserRouter>
+    </>
   );
 }
 
@@ -58,7 +36,6 @@ function Home() {
   return (
     <div className="container main-page">
       <div className="left-side side">
-        {/* Використовуємо твою картинку зі зменшеним розміром через CSS */}
         <img src={homeImg} alt="SkyLab System" className="main-img" />
       </div>
       <div className="right-side side">
@@ -80,7 +57,6 @@ function Home() {
             <li>🔹 <strong>Прозорість:</strong> чітке відображення дедлайнів, оцінок та дат здачі для кожного студента.</li>
           </ul>
         </div>
-
         <p style={{ color: 'var(--blue-green)', fontStyle: 'italic', marginTop: '15px' }}>
           SkyLab — ваш надійний провідник у просторі цифрової освіти 2026 року.
         </p>
@@ -101,7 +77,6 @@ function Login() {
         </form>
       </div>
       <div className="right-side side">
-        {/* 3. Вставляємо картинку для сторінки логіну */}
         <img src={loginImg} alt="Login Illustration" className="main-img" />
       </div>
     </div>
