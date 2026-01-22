@@ -3,3 +3,4 @@ uvicorn[standard]
 pymongo
 python-jose
 passlib[bcrypt]
+email-validator
