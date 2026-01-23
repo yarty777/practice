@@ -1,6 +1,8 @@
 import './App.css';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import {StudentDashboard,StudentLabs} from './Student.js'
+import { StudentDashboard, StudentLabs } from './Student.js';
+import TeacherLabsPage from './TeacherLabsPage';
+import TeacherStudentsPage from './TeacherStudentsPage';
 
 // Імпортуємо картинки та логотип
 import homeImg from './assets/home-img.png';
@@ -20,31 +22,32 @@ function App() {
         <div className="nav-links">
           <Link to="/" className="nav-link">Головна</Link>
           <Link to="/login" className="nav-link">Увійти</Link>
-          <Link to="/student/dashboard" className="nav-link">Профіль(студента)</Link>{/*тимчасова річ для легшого пересування*/ }
-          <Link to="/student/labs" className="nav-link">Лаби(студента)</Link>{/*тимчасова річ для легшого пересування*/ }
+          <Link to="/student/dashboard" className="nav-link">Профіль(студента)</Link>{/*тимчасова річ для легшого пересування*/}
+          <Link to="/student/labs" className="nav-link">Лаби(студента)</Link>{/*тимчасова річ для легшого пересування*/}
+          <Link to="/teacher/students" className="nav-link">Студенти(викладач)</Link>{/*тимчасова річ для легшого пересування*/}
+          <Link to="/teacher/labs" className="nav-link">Лаби(викладач)</Link>{/*тимчасова річ для легшого пересування*/}
         </div>
       </nav>
 
       <Routes>
         <Route path="/" element={<Home />} />
-          {/*Головна*/}
-          <Route path="/login" element={<Login />} />
-          {/*Реєстрація*/}
+        {/*Головна*/}
+        <Route path="/login" element={<Login />} />
+        {/*Реєстрація*/}
 
-          <Route path="/student/dashboard" element={<StudentDashboard />} />
-          {/*профіль студента (ПІБ група статистика)*/}
-          <Route path="/student/labs" element={<StudentLabs />} />
-          {/*список лаб}
-          {/*
-          <Route path="/teacher/dashboard" element={<TeacherDashboard />} />
-          {статистика по групам і профіль вчителя}
-          <Route path="/teacher/students" element={<TeacherStudents />} />
-          {список студентів}
-          <Route path="/teacher/labs" element={<TeacherLabs />} />
-          {створення редагування лабараторних робіт}
-          
-          <Route path="*" element={<div>404 - Сторінку не знайдено</div>} />
-          {ПОМИЛКА!!!}*/}
+        <Route path="/student/dashboard" element={<StudentDashboard />} />
+        {/*профіль студента (ПІБ група статистика)*/}
+        <Route path="/student/labs" element={<StudentLabs />} />
+        {/*список лаб*/}
+
+        {/* ДОДАВ ЦІ ДВА НОВІ ROUTES: */}
+        <Route path="/teacher/students" element={<TeacherStudentsPage />} />
+        {/*список студентів*/}
+        <Route path="/teacher/labs" element={<TeacherLabsPage />} />
+        {/*створення редагування лабараторних робіт*/}
+
+        <Route path="*" element={<div>404 - Сторінку не знайдено</div>} />
+        {/*ПОМИЛКА!!!*/}
       </Routes>
 
       <footer className="footer">
