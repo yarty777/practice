@@ -1,17 +1,19 @@
 import './App.css';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import {StudentDashboard,StudentLabs} from './Student.js'
+import { StudentDashboard, StudentLabs } from './Student.js';
+import TeacherLabsPage from './TeacherLabsPage';
+import TeacherStudentsPage from './TeacherStudentsPage';
+import BarChartGrades from './BarChartGrades'; // ДОДАВ ІМПОРТ ДІАГРАМИ
 
 // Імпортуємо картинки та логотип
 import homeImg from './assets/home-img.png';
 import loginImg from './assets/login-img.png';
-import logoImg from './assets/logo.png'; // Твій новий логотип
+import logoImg from './assets/logo.png';
 
 function App() {
   return (
     <BrowserRouter>
       <nav className="nav-menu">
-        {/* Логотип як посилання на головну сторінку */}
         <Link to="/" className="logo-container">
           <img src={logoImg} alt="SkyLab Logo" className="nav-logo" />
           <span className="logo-text">SkyLab</span>
@@ -20,31 +22,31 @@ function App() {
         <div className="nav-links">
           <Link to="/" className="nav-link">Головна</Link>
           <Link to="/login" className="nav-link">Увійти</Link>
-          <Link to="/student/dashboard" className="nav-link">Профіль(студента)</Link>{/*тимчасова річ для легшого пересування*/ }
-          <Link to="/student/labs" className="nav-link">Лаби(студента)</Link>{/*тимчасова річ для легшого пересування*/ }
+          <Link to="/student/dashboard" className="nav-link">Профіль(студента)</Link>
+          <Link to="/student/labs" className="nav-link">Лаби(студента)</Link>
+          <Link to="/teacher/students" className="nav-link">Студенти(викладач)</Link>
+          <Link to="/teacher/labs" className="nav-link">Лаби(викладач)</Link>
+          <Link to="/charts/bar" className="nav-link">Графіки</Link> {/* ДОДАВ ПОСИЛАННЯ */}
         </div>
       </nav>
 
       <Routes>
         <Route path="/" element={<Home />} />
-          {/*Головна*/}
-          <Route path="/login" element={<Login />} />
-          {/*Реєстрація*/}
-
-          <Route path="/student/dashboard" element={<StudentDashboard />} />
-          {/*профіль студента (ПІБ група статистика)*/}
-          <Route path="/student/labs" element={<StudentLabs />} />
-          {/*список лаб}
-          {/*
-          <Route path="/teacher/dashboard" element={<TeacherDashboard />} />
-          {статистика по групам і профіль вчителя}
-          <Route path="/teacher/students" element={<TeacherStudents />} />
-          {список студентів}
-          <Route path="/teacher/labs" element={<TeacherLabs />} />
-          {створення редагування лабараторних робіт}
-          
-          <Route path="*" element={<div>404 - Сторінку не знайдено</div>} />
-          {ПОМИЛКА!!!}*/}
+        <Route path="/login" element={<Login />} />
+        
+        {/* Студентські сторінки */}
+        <Route path="/student/dashboard" element={<StudentDashboard />} />
+        <Route path="/student/labs" element={<StudentLabs />} />
+        
+        {/* Викладацькі сторінки */}
+        <Route path="/teacher/students" element={<TeacherStudentsPage />} />
+        <Route path="/teacher/labs" element={<TeacherLabsPage />} />
+        
+        {/* Графіки та аналітика */}
+        <Route path="/charts/bar" element={<BarChartGrades />} /> {/* ДОДАВ РОУТ ДЛЯ ДІАГРАМИ */}
+        
+        {/* Сторінка 404 */}
+        <Route path="*" element={<div>404 - Сторінку не знайдено</div>} />
       </Routes>
 
       <footer className="footer">
@@ -58,7 +60,6 @@ function Home() {
   return (
     <div className="container main-page">
       <div className="left-side side">
-        {/* Використовуємо твою картинку зі зменшеним розміром через CSS */}
         <img src={homeImg} alt="SkyLab System" className="main-img" />
       </div>
       <div className="right-side side">
@@ -101,7 +102,6 @@ function Login() {
         </form>
       </div>
       <div className="right-side side">
-        {/* 3. Вставляємо картинку для сторінки логіну */}
         <img src={loginImg} alt="Login Illustration" className="main-img" />
       </div>
     </div>
