@@ -1,8 +1,8 @@
-import React from 'react'; 
+﻿import React from 'react'; 
 import './App.css'; 
 import PieChartComponent from './PieChartComponent'; 
  
-const TeacherStudentsPage = () =
+const TeacherStudentsPage = () => {
   const students = [ 
     {id: 1, name: 'Student 1', group: 'IPZ-21', avgGrade: 95, labsCompleted: 8, totalLabs: 10}, 
   ]; 
@@ -22,3 +22,5 @@ const TeacherStudentsPage = () =
 }; 
  
 export default TeacherStudentsPage; 
+
+
