@@ -6,26 +6,14 @@ const PieChartComponent = ({ data }) =
  
   return ( 
     <div style={{ width: '100%', height: 400 }}> 
-      <h3 style={{ textAlign: 'center', color: 'var(--deep-twilight)', marginBottom: '20px' }}> 
-        Статуси лабораторних роб?т 
-      </h3> 
       <ResponsiveContainer width="100%" height="100%"> 
         <PieChart> 
-          <Pie 
-            data={data} 
-            cx="50%" 
-            cy="50%" 
-            labelLine={true} 
-            label={(entry) = $"{entry.value}"`} 
-            outerRadius={120} 
-            fill="#8884d8" 
-            dataKey="value" 
-          > 
+          <Pie data={data} dataKey="value"> 
             {data.map((entry, index) =
-              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} /> 
+              <Cell key={index} fill={COLORS[index % COLORS.length]} /> 
             ))} 
           </Pie> 
-          <Tooltip formatter={(value) = лаб`, 'К?льк?сть']} /> 
+          <Tooltip /> 
           <Legend /> 
         </PieChart> 
       </ResponsiveContainer> 
